@@ -1,0 +1,12 @@
+{
+  "reviews":[
+    {"rating": 1, "review": "bad job", "suggestion": "do better"},
+    {"rating": 5, "review": "great job", "suggestion": "no suggestion"},
+    {"rating": 3, "review": "medium job", "suggestion": "do a bit better"},
+    {"rating": 4, "review": "good job", "suggestion": "no markers"},
+    {"rating": 2, "review": "eh", "suggestion": "try harder"},
+    {"rating": 5, "review": "amazing job", "suggestion": "no suggestionzzz"}
+  ]
+}
+
+[{"rating": 1, "review": "bad job", "suggestion": "do better"},{"rating": 5, "review": "great job", "suggestion": "no suggestion"},{"rating": 3, "review": "medium job", "suggestion": "do a bit better"},{"rating": 4, "review": "good job", "suggestion": "no markers"},{"rating": 2, "review": "eh", "suggestion": "try harder"},{"rating": 5, "review": "amazing job", "suggestion": "no suggestionzzz"}]

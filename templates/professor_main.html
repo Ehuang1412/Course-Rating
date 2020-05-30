@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<html>
+<head>
+  <title>DB Final Project</title>
+</head>
+<style type="text/css">
+.w3-sidebar{
+  width:240px;
+  box-shadow: 2px 2px 5px lightgrey;
+  z-index: 1;
+}
+img{
+  margin-left:85px;
+  margin-top:30px;
+  margin-bottom:10px;
+}
+#bodymessage {
+  width: 100%;
+  position: fixed;
+  text-align:center;
+  font-size:x-large;
+  padding-top:250px;
+  padding-left:240px;
+}
+#names{
+  text-align:center;
+}
+
+#reviews {
+  margin-left: 240px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*border: 1px solid #e7e7e7;*/
+    background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 12px;
+  vertical-align: bottom;
+}
+
+#topbar{
+  position: fixed;
+  margin: 0px;
+  margin-left: 240px;
+  max-height: 100px;
+  width:100%;
+  background-color:white;
+  box-shadow: 3px 2px 5px lightgrey;
+  z-index: 4;
+}
+.topli{
+  float:middle;
+  padding-left:200px;
+}
+#logout {
+  position: fixed;
+  right: 0px;
+  padding-right: 10px;
+  padding-top: 10px;
+  z-index: 5;
+}
+
+body {
+  background-color: rgb(251,251,251);
+}
+</style>
+<body>
+<div class="w3-sidebar w3-bar-block w3-purple">
+<img src =".{{dot}}/icon.png" alt ="icon" margin-left:105px; width=60px; height = 60px;>
+<p id="names"> DB FINAL PROJECT:<br>DORON, EMILY<br>RICARDO, SHAHRAN</p>
+{% for class in classes %}
+   <div class="w3-dropdown-hover">
+    <button class="w3-button">{{class[0]}}<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block">
+      {% for lecture in class[1::] %}
+      <a href=".{{dot}}/prof_reviews/lec_id={{lecture["lec_id"]}}" class="w3-bar-item w3-button">{{lecture["date"]}}</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+<a href=".{{dot}}/add_lecture" class="w3-bar-item w3-button w3-hover-grey">Add Lecture</a>
+<a href=".{{dot}}/add_section" class="w3-bar-item w3-button w3-hover-grey">Add Section</a>
+</div>
+
+<div id="logout">
+<form action="/signout" method="POST">
+<button class="btn waves-effect waves-light">LOG OUT</button>
+</form>
+</div>
+
+{% if topbar %}
+<ul id="topbar">
+    <li class ="topli">Reviews:<br>{{review_count}}</li>
+    <li class="topli">Average review:<br>{{avg_review}}</li>
+    <li class="topli">Date:<br>{{date}}</li>
+</ul>
+{%endif%}
+
+
+{% if bodymessage != "" %}
+<p id="bodymessage">
+{% for message in bodymessage %}
+{{message}}<br>
+{% endfor %}
+</p>
+{%endif%}
+
+
+{% if reviewsexist %}
+<div id="reviews"><br><br><br><br>
+{% for review in reviews %}
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card-panel white">
+      <span class="card-title">{{["", "😕  Bad", "😐  Okay", "🙂  Good", "😃  Great", "🤩  Excellent"][review["star_rating"]]}}
+      </span>
+      <p>{{review["review"]}}
+      </p>
+      <p>{{review["suggestion"]}}
+      </p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{%endif%}
+
+<!-- <a href="signout"><div id="logout">Log Out</div></a> -->
+
+
+</body>
+
+</html>

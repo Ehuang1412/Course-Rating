@@ -1,0 +1,61 @@
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<html>
+<head>
+	<title>DB Final Project</title>
+</head>
+<style type="text/css">
+	.everything {
+		position: relative/*fixed*/;
+		top: 20%;
+		left: 50%;
+		right: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, -32%);
+		width: 300px;
+	}
+	.butt {
+		position: absolute;
+		left: 95px;
+	}
+  .errormessage {
+    position: relative;
+    transform: translate(0%,120%);
+  }
+</style>
+<body>
+<div class="everything">
+    <form class="col s12" action="/loginAuth" method="POST">
+      <div class="row">
+        <div class="input-field">
+          <input id="user_name" type="text" class="validate" name="username" required>
+          <label for="user_name">Username</label>
+        </div>
+       </div>
+       	<div class="row">
+        <div class="input-field ">
+          <input id="password" type="password" class="validate" name="password" required>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      	<div class="butt"><button class="waves-effect waves-light btn-large">Log In</button></div>
+    </form>
+
+  <div class="errormessage">
+  <div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Wrong password! Try again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+</body>
+</html>
+ 

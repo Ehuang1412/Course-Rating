@@ -1,0 +1,16 @@
+{% for review in reviews %}
+
+<div class="row">
+	<div class="col s8 offset-s2">
+		<div class="card-panel white">
+			<span class="card-title">{{["", "😕  Bad", "😐  Okay", "🙂  Good", "😃  Great", "🤩  Excellent"][review["star_rating"]]}}
+			</span>
+			<p>{{review["review"]}}
+			</p>
+			<p>{{review["suggestion"]}}
+			</p>
+		</div>
+	</div>
+</div>
+
+{% endfor %}

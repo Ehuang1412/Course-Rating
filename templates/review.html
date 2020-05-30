@@ -1,0 +1,249 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<html>
+<head>
+  <title>DB Final Project</title>
+</head>
+<style type="text/css">
+.w3-sidebar{
+  width:240px;
+}
+#bodymessage {
+  width: 100%;
+  position: fixed;
+  text-align:center;
+  font-size:x-large;
+  padding-top:250px;
+  padding-left:240px;
+}
+img{
+  margin-left:85px;
+  margin-top:30px;
+  margin-bottom:10px;
+}
+#names{
+  text-align:center;
+}
+.everything {
+  /*margin-top: 100px;*/
+  margin-left: 240px;
+}
+.container {
+  /*margin-right: 500%;*/
+  padding-left: 30%;
+}
+.hi {
+  left: 500%;
+  right: 50%;
+  margin-right: -50%;
+  width: 700px;
+}
+.topbar {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  transform: translate(0%, -95%);
+}
+form {
+  /*margin-top: 10px;*/
+}
+#logout {
+  position: fixed;
+  right: 0px;
+  padding-right: 10px;
+  padding-top: 10px;
+  z-index: 4;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*border: 1px solid #e7e7e7;*/
+    background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+  /*text-align:center;*/
+  display: block;
+  text-align: center;
+  padding: 14px 12px;
+  vertical-align: bottom;
+}
+
+#topbar{
+  position: fixed;
+  margin: 0px;
+  margin-left: 240px;
+  max-height: 100px;
+  width:100%;
+  background-color:white;
+  box-shadow: 3px 2px 5px lightgrey;
+  z-index: 2;
+}
+.topli{
+  float:middle;
+  padding-left:200px;
+}
+
+
+</style>
+
+<body>
+<div class="w3-sidebar w3-bar-block w3-purple">
+  <img src =".{{dot}}/icon.png" alt ="icon" margin-left:105px; width=60px; height = 60px;>
+
+  <p id="names"> DB FINAL PROJECT:<br>DORON, EMILY<br>RICARDO, SHAHRAN</p>
+  <div class="w3-sidebar w3-bar-block w3-purple"> 
+  <div class="w3-bar-item w3-deep-purple  w3-large w3-center">Not Reviewed</div>
+  {% for lecture in notreviewed %}
+  <a href=".{{dot}}/reviewfor/lec_id={{lecture["lec_id"]}}" class="w3-bar-item w3-button w3-pale-red w3-center">Class {{lecture["date"]}}</a>
+  {% endfor %}
+  <div class="w3-bar-item w3-deep-purple w3-large w3-center">Reviewed</div>
+  {% for lecture in reviewed %}
+  <a href=".{{dot}}/reviewfor/lec_id={{lecture["lec_id"]}}"class="w3-bar-item w3-button  w3-pale-red w3-center">Class {{lecture["date"]}}</a>
+  {% endfor %}
+</div>
+
+</div>
+
+
+  
+
+{% if bodymessage != "" %}
+<p id="bodymessage">
+{% for message in bodymessage %}
+{{message}}<br>
+{% endfor %}
+</p>
+{%endif%}
+
+
+<div id="logout">
+<form action="/signout" method="POST">
+<button class="btn waves-effect waves-light">LOG OUT</button>
+</form>
+</div>
+
+{% if topbar %}
+<ul id="topbar">
+    <li class ="topli"><br></li>
+    <li class="topli"><br>{{date}}<br><br></li>
+    <li class="topli"><br></li>
+</ul>
+{%endif%}
+
+<div class="everything">
+
+{% if reviewform == False and bodymessage == "" %}
+<div id="reviews"><br><br><br><br><br><br>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card-panel white">
+        <span class="card-title">{{["", "😕  Bad", "😐  Okay", "🙂  Good", "😃  Great", "🤩  Excellent"][review["star_rating"]]}}
+        </span>
+        <p>{{review["review"]}}</p>
+        <p>{{review["suggestion"]}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{%endif%}
+
+
+
+
+
+
+
+
+
+{% if reviewform %}
+  <br><br><br><br><br>
+  <form action="/postreview/lec_id={{lec_id}}" method="POST">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card-panel white">
+        <span class="black-text">
+          
+            <p>How was today's lecture?</p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="1" required />
+                <span>😕  Bad</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="2"/>
+                <span>😐  Okay</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="3"/>
+                <span>🙂  Good</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="4"/>
+                <span>😃  Great</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input class="with-gap" name="group1" type="radio" value="5"/>
+                <span>🤩  Excellent</span>
+              </label>
+            </p>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card-panel white">
+        <span class="black-text">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea2" class="materialize-textarea" name="explain" required></textarea>
+              <label for="textarea2">Explain why</label>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card-panel white">
+        <span class="black-text">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea3" class="materialize-textarea" name="suggestions" required></textarea>
+              <label for="textarea3">Suggestions for improvements?</label>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col s6 offset-s3">
+      <button class="waves-effect waves-light btn-large">submit</button>
+    </div>
+  </div>
+  </form>
+{%endif%}
+</div>
+
+</body>
+</html>

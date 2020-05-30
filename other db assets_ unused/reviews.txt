@@ -1,0 +1,21 @@
+"5, \"This was a great lecture. It was super engaging! Keep it up.\", \"No suggestions\",\"A1\",\"1\"",
+
+w
+
+"4, \"It could be a bit better\", \"I would appreciate if you wrote bigger on the white board\",\"A1\"",
+"3, \"The class needs improvement\", \"Try to cover concepts more in-depth\",\"A1\"",
+"1, \"THE TEACHER DOES NOT TEACH\", \"TEACH US SOME\",\"A1\"",
+"1, \"10/10 would not take again\", \"Learn from Haldun\",\"A1\"",
+"5, \"The slow pace is perfect for me to absorb the material he teaches\", \"Just write more neatly\",\"A1\"",
+"5, \"I did not understand anything, but I can play\", \"Continue ignoring me\",\"A1\"",
+"5, \"It was a great lecture\", \"Cover less topics\",\"A1\"",
+"1, \"10/10 would not take again\", \"Learn from Haldun\",\"A1\"",
+"3, \"It could be better\", \"Yes\",\"A1\"",
+"5, \"The slow pace is perfect for me to absorb the material he teaches\", \"Just write moreneatly\",\"A1\"",
+"5, \"This was a great lecture. It was super engaging! Keep it up.\", \"No suggestions\",\"A1\"",
+"4, \"I learned a lot\", \"I think you should be more interactive\",\"A1\"",
+"5, \"I did not understand anything, but I can play\", \"So continue to be inanttentive\",\"A1\""
+
+
+,\"A1\"
+,\"\"

@@ -1,0 +1,8 @@
+[
+
+{'username': 'professor', 'passwords': 'password', 'professorid': 1, 'studentid': None}, 
+
+{'username': 'username', 'passwords': 'password', 'professorid': None, 'studentid': 1}
+
+]
+

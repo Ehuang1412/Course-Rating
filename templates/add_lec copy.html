@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<html>
+<head>
+  <title>DB Final Project</title>
+</head>
+<style type="text/css">
+.w3-sidebar{
+  width:240px;
+  box-shadow: 2px 2px 5px lightgrey;
+  z-index: 1;
+}
+img{
+  margin-left:85px;
+  margin-top:30px;
+  margin-bottom:10px;
+}
+#bodymessage {
+  width: 100%;
+  position: fixed;
+  text-align:center;
+  font-size:x-large;
+  padding-top:250px;
+  padding-left:240px;
+}
+#names{
+  text-align:center;
+}
+
+#reviews {
+  margin-left: 240px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*border: 1px solid #e7e7e7;*/
+    background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 12px;
+  vertical-align: bottom;
+}
+
+#topbar{
+  position: fixed;
+  margin: 0px;
+  margin-left: 240px;
+  max-height: 100px;
+  width:100%;
+  background-color:white;
+  box-shadow: 3px 2px 5px lightgrey;
+  z-index: 4;
+}
+.topli{
+  float:middle;
+  padding-left:200px;
+}
+#logout {
+  position: fixed;
+  right: 0px;
+  padding-right: 10px;
+  padding-top: 10px;
+  z-index: 5;
+}
+
+/*body {*/
+  /*background-color: rgb(251,251,251);*/
+/*}*/
+.everything {
+  /*margin-top: 100px;*/
+  margin-left: 240px;
+}
+.container {
+  /*margin-right: 500%;*/
+  padding-left: 30%;
+}
+</style>
+<body>
+<div class="w3-sidebar w3-bar-block w3-purple">
+<img src =".{{dot}}/icon.png" alt ="icon" margin-left:105px; width=60px; height = 60px;>
+<p id="names"> DB FINAL PROJECT:<br>DORON, EMILY<br>RICARDO, SHAHRAN</p>
+{% for class in classes %}
+   <div class="w3-dropdown-hover">
+    <button class="w3-button">{{class[0]}}<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block">
+      {% for lecture in class[1::] %}
+      <a href=".{{dot}}/prof_reviews/lec_id={{lecture["lec_id"]}}" class="w3-bar-item w3-button">{{lecture["date"]}}</a>
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+<a href="#" class="w3-bar-item w3-button w3-hover-grey">Add Lecture</a>
+<a href="#" class="w3-bar-item w3-button w3-hover-grey">Add Section</a>
+</div>
+
+<div id="logout">
+<form action="/signout" method="POST">
+<button class="btn waves-effect waves-light">LOG OUT</button>
+</form>
+</div>
+
+<div class="everything"><br><br><br>
+  <form action="/add_sect" method="POST">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <div class="card-panel white">
+          <span class="black-text">
+            <div class="row">
+              It looks like you want to add a new lecture!<br><br>What date was it on?
+              <div class="input-field col s12">
+                <textarea id="textarea3" class="materialize-textarea" name="date" required></textarea>
+                <label for="textarea3"> YYYY-MM-DD</label>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <div class="card-panel white">
+          <span class="black-text">
+            <div class="row">
+              What was the section?
+              <div class="input-field col s12">
+                <textarea id="textarea3" class="materialize-textarea" name="date" required></textarea>
+                <label for="textarea3"> Section ID</label>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="col s6 offset-s3">
+        <button class="waves-effect waves-light btn-large">submit</button>
+      </div>
+    </div>
+    </form>
+</div>
+
+<!-- <a href="signout"><div id="logout">Log Out</div></a> -->
+
+
+</body>
+
+</html>
